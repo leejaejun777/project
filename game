@@ -1,0 +1,42 @@
+ch1 player;
+ch2[] bb;
+ch3[] cc;
+int state = 0;
+
+void setup() {
+  size(900, 900);
+  player = new ch1(500, 500, 30);
+  bb = new ch2[10];
+  cc = new ch3[10];
+  for (int i = 0; i < 10; i++) {
+    bb[i] = new ch2(random(0, 900), random(0, 100), 1);
+    cc[i] = new ch3(random(0, 900), random(0, 100), 4, 0);
+  }
+}
+
+void draw(){
+  if(state == 0) {
+    mainMenu();
+  }
+  
+  else if(state == 1){
+    background(255);
+    player.display(); 
+
+   for (int i = 0; i < 10; i++) {
+    bb[i].bonobono();
+    cc[i].Life();
+    bb[i].baggue();
+    cc[i].baggue();
+    player.collide(bb[i]);
+    player.collide22(cc[i]);
+   }
+  }
+  
+   else {
+     gameOver();
+   }
+}
+void keyPressed() {
+  player.jun();
+}

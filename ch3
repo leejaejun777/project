@@ -1,0 +1,44 @@
+class ch3 {
+  float x, y, d,vx,vy;
+  int op;
+  
+  ch3(float x, float y, float d, int op) {
+    this.x = x;
+    this.y = y;
+    this.d = d;
+    this.op = op;
+    vx = random(-3, 3);
+    vy = random(-4, 4);
+  }
+  
+  void Life() {
+    if (op == 0) fill(255);
+    else if (op == 1) fill(255, 0, 0);
+    else fill(0, 255, 0);
+
+    strokeWeight(5);
+    ellipse(x - 3 * d, y - 3 * d, d * 5, d * 10);
+    ellipse(x + 3 * d, y - 3 * d, d * 5, d * 10);
+    ellipse(x, y, d * 18, d * 13);
+    strokeWeight(2);
+    line(x - d * 5, y - 3 * d, x - 2 * d, y - 4 * d);
+    line(x + d * 5, y - 3 * d, x + 2 * d, y - 4 * d);
+    arc(x, y + d * 1.5, d * 2, d, 0, PI);
+    fill(0);
+    circle(x - d * 3, y - d, d * 3);
+    circle(x + d * 3, y - d, d * 3);
+    fill(255);
+    ellipse(x - d * 3, y - 1.5 * d, d * 2, d * 1.5);
+    ellipse(x + d * 3, y - 1.5 * d, d * 2, d * 1.5);
+    arc(x - d * 3, y - 0.5 * d, d * 1.5, d, 0, PI);
+    arc(x + d * 3, y - 0.5 * d, d * 1.5, d, 0, PI);
+  }
+  void baggue() {
+    x += vx;
+    y += vy;
+    if (x < 0) vx = random(1, 3);
+    if (x > width) vx = random(-3, 0);
+    if (y < 0) vy = random(1, 4);
+    if (y > height) vy = random(-4, 0);
+  }
+}

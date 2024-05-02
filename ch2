@@ -1,0 +1,44 @@
+class ch2 {
+  float x, y, d;
+  float vx, vy;
+
+
+  ch2(float x, float y, float d ) {
+    this.x = x;
+    this.y = y;
+    this.d = d;
+    vx = random(-3, 3);
+    vy = random(-4, 4);
+  }
+
+  void bonobono() {
+
+    fill(135, 206, 250);
+    stroke(135, 206, 250);
+    square(x-d*16, y+d*28, d*32);
+    stroke(0, 0, 0);
+    circle(x, y+d, d*64);
+    arc(x-d*16, y+d*60, d*24, d*64, PI, PI+HALF_PI);
+    arc(x+d*16, y+d*60, d*24, d*64, PI+HALF_PI, TWO_PI);
+
+    fill(255, 250, 250);
+    stroke(255, 250, 250);
+    circle(x-d*8, y+d*8, d*16);
+    circle(x+d*8, y+d*8, d*16);
+    rect(x-d*8, y, d*16, d*8);
+
+    fill(0, 0, 0);
+    stroke(0, 0, 0);
+    circle(x-d*22, y-d*10, d*3);
+    circle(x+d*22, y-d*10, d*3);
+    circle(x, y, d*7);
+  }
+  void baggue() {
+    x += vx;
+    y += vy;
+    if (x < 0) vx = random(1, 3);
+    if (x > width) vx = random(-3, 0);
+    if (y < 0) vy = random(1, 4);
+    if (y > height) vy = random(-4, 0);
+  }
+}
